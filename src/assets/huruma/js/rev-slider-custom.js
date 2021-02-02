@@ -1,6 +1,8 @@
 var tpj=jQuery;
 var revapi1078;
 tpj(document).ready(function() {
+    setTimeout(() => {
+        console.log('Loading revslider');
     if(tpj("#rev_slider_1078_1").revolution == undefined){
         revslider_showDoubleJqueryError("#rev_slider_1078_1");
     } else {
@@ -99,4 +101,5 @@ tpj(document).ready(function() {
             }
         });
     }
+    }, 2000);
 });
