@@ -2,6 +2,7 @@
 	'use strict';
 	jQuery(document).on('ready', function(){
 		
+        setTimeout(() => {
         console.log('jQuery :: Document ready');
 
 		// Mean Menu
@@ -442,6 +443,7 @@
 			$('#preloader').fadeOut()
 		}, 1000);
 
+        }, 1000);
 
 
 	});
