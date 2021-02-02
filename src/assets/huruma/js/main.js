@@ -2,15 +2,19 @@
 	'use strict';
 	jQuery(document).on('ready', function(){
 		
+        console.log('jQuery :: Document ready');
+
 		// Mean Menu
-		 jQuery('.mean-menu').meanmenu({
+	    jQuery('.mean-menu').meanmenu({
 			meanScreenWidth: "991"
         });
 
 		// Preloader
-		jQuery(window).on('load', function() {
+		//jQuery(window).on('load', function() {
+        setTimeout(() => {
+            console.log('hiding .preloader');
             $('.preloader').fadeOut();
-		});
+		}, 2000)
 
 		// Home Slides
 		$('.home-slides').owlCarousel({
@@ -432,9 +436,11 @@
         });
 
 		// Preloader
-		jQuery(window).on('load', function () {
+		//jQuery(window).on('load', function () {
+        setTimeout(() => {
+            console.log('hiding #preloader');
 			$('#preloader').fadeOut()
-		})
+		}, 1000);
 
 
 

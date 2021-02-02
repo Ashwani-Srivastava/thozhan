@@ -5,6 +5,15 @@ import { Component, h } from '@stencil/core';
     styleUrl: 'app-home.css',
 })
 export class AppHome {
+
+    componentWillLoad() {
+        console.log('AppHome :: componentWillLoad');
+    }
+
+    componentDidLoad() {
+        console.log('AppHome :: componentDidLoad');
+    }
+
     render() {
         return ( <span>
 
