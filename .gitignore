@@ -2,7 +2,6 @@ dist/
 !www/favicon.ico
 ww/
 www/
-src/index.html
 
 src/assets/data/
 src/components/data/
