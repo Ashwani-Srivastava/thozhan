@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
 
 @Component({
     tag: 'app-home',
@@ -6,83 +6,42 @@ import { Component, h } from '@stencil/core';
 })
 export class AppHome {
 
-    componentWillLoad() {
-        console.log('AppHome :: componentWillLoad');
+    @State() obj: any = {
+        name:"",
+        vision:"",
+    };
+    async componentWillLoad(){
+        const response = await fetch("../../assets/thozhan.json");
+        this.obj = await response.json();
+        console.log(this.obj);
     }
-
-    componentDidLoad() {
-        console.log('AppHome :: componentDidLoad');
-    }
-
     render() {
         return ( <span>
 
-        { /** Start Header Area  */ }
-        <div class="preloader">
-            <div class="preloader">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        { /** End Header Area  */ }
-
-        { /** Start Header Area  */ }
-        <div class="header-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header-content">
-                            <p>
-                                <a href="#">The fund will go to the poor... <span>Donate Now</span></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="top-header-social">
-                            <span>Follow us:</span>
-                            <a href="#" target="_blank">
-                                <i class='flaticon-facebook'></i>
-                            </a>
-
-                            <a href="#" target="_blank">
-                                <i class='flaticon-twitter'></i>
-                            </a>
-
-                            <a href="#" target="_blank">
-                                <i class='flaticon-instagram'></i>
-                            </a>
-
-                            <a href="#" target="_blank">
-                                <i class='flaticon-linkedin'></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        { /** End Header Area  */ }
+        <app-header></app-header>
 
         { /** Start Navbar Area  */ }
-        <div class="navbar-area">
+        <div class="navbar-area navbar-default navbar-fixed-top">
             <div class="huruma-responsive-nav">
                 <div class="container">
                     <div class="huruma-responsive-menu">
                         <div class="logo">
-                            <a href="index.html"> <img src="/assets/huruma/img/logo.png" class="white-logo" alt="logo" />
-                                <img src="/assets/huruma/img/logo-2.png" class="black-logo" alt="image" />
+                            <a href="src/index.html">
+                            <img src={this.obj.logo.url} class="white-logo" alt="logo" height="165" width="186"/>
+                            <img src={this.obj.logo.url} class="black-logo" height="68" width="202" alt="image"/>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+            
 
             <div class="huruma-nav">
                 <div class="container">
-                    <nav class="navbar navbar-expand-md navbar-light">
+                    <nav class="navbar navbar-expand-md navbar-light navbar-fixed-top">
                         <a class="navbar-brand" href="index.html">
-                            <img src="/assets/huruma/img/logo.png" class="white-logo" alt="logo" />
-                            <img src="/assets/huruma/img/logo-2.png" class="black-logo" alt="image" />
+                            <img src={this.obj.logo.url} class="white-logo" alt="logo" height="165" width="186"/>
+                            <img src={this.obj.logo.url} class="black-logo" height="68" width="202" alt="image"/>
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -95,7 +54,7 @@ export class AppHome {
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="index.html" class="nav-link active">
+                                            <a href="index.html" class="nav-link">
                                                 Home One
                                             </a>
                                         </li>
@@ -113,7 +72,7 @@ export class AppHome {
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="index-4.html" class="nav-link">
+                                            <a href="index-4.html" class="nav-link active">
                                                 Home Four
                                             </a>
                                         </li>
@@ -121,7 +80,7 @@ export class AppHome {
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="about.html" class="nav-link">
+                                    <a href="assets/pages/about.html" class="nav-link">
                                         <span>o2</span>
                                         About
                                     </a>
@@ -157,19 +116,19 @@ export class AppHome {
 
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="about.html" class="nav-link">
+                                            <a href="assets/pages/about.html" class="nav-link">
                                                 About
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="team.html" class="nav-link">
+                                            <a href="assets/pages/team.html" class="nav-link">
                                                 Team
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="gallery.html" class="nav-link">
+                                            <a href="assets/pages/gallery.html" class="nav-link">
                                                 Gallery
                                             </a>
                                         </li>
@@ -278,42 +237,43 @@ export class AppHome {
                             </ul>
 
                             <div class="others-options">
-                                <div class="dropdown language-switcher d-inline-block">
+                                {/* <div class="dropdown language-switcher d-inline-block">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="/assets/huruma/img/flag/france-flag.jpg" class="shadow" alt="image" />
+                                        <img src="assets/img/flag/france-flag.jpg" class="shadow" alt="image"/>
                                         <span>Eng <i class='bx bx-chevron-down'></i></span>
                                     </button>
 
                                     <div class="dropdown-menu">
                                         <a href="#" class="dropdown-item d-flex align-items-center">
-                                            <img src="/assets/huruma/img/flag/germany-flag.jpg" class="shadow-sm" alt="flag" />
+                                            <img src="assets/img/flag/germany-flag.jpg" class="shadow-sm" alt="flag"/>
                                             <span>Ger</span>
                                         </a>
                                         <a href="#" class="dropdown-item d-flex align-items-center">
-                                            <img src="/assets/huruma/img/flag/italy-flag.jpg" class="shadow-sm" alt="flag" />
+                                            <img src="assets/img/flag/italy-flag.jpg" class="shadow-sm" alt="flag"/>
                                             <span>Fre</span>
                                         </a>
                                         <a href="#" class="dropdown-item d-flex align-items-center">
-                                            <img src="/assets/huruma/img/flag/spain-flag.jpg" class="shadow-sm" alt="flag" />
+                                            <img src="assets/img/flag/spain-flag.jpg" class="shadow-sm" alt="flag"/>
                                             <span>Spa</span>
                                         </a>
                                         <a href="#" class="dropdown-item d-flex align-items-center">
-                                            <img src="/assets/huruma/img/flag/russia-flag.jpg" class="shadow-sm" alt="flag" />
+                                            <img src="assets/img/flag/russia-flag.jpg" class="shadow-sm" alt="flag"/>
                                             <span>Rus</span>
                                         </a>
                                         <a href="#" class="dropdown-item d-flex align-items-center">
-                                            <img src="/assets/huruma/img/flag/us-flag.jpg" class="shadow-sm" alt="flag" />
+                                            <img src="assets/img/flag/us-flag.jpg" class="shadow-sm" alt="flag"/>
                                             <span>Ita</span>
                                         </a>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div class="option-item"><i class="search-btn bx bx-search"></i>
                                     <i class="close-btn bx bx-x"></i>
                                     <div class="search-overlay search-popup">
                                         <div class='search-box'>
                                             <form class="search-form">
-                                                <input class="search-input" name="search" placeholder="Search" type="text" /> 
+                                                <input class="search-input" name="search" placeholder="Search" type="text"/>
+
                                                 <button class="search-button" type="submit">
                                                     <i class="bx bx-search"></i>
                                                 </button>
@@ -339,7 +299,7 @@ export class AppHome {
                 <div class="sidebar-about-area">
                     <div class="title">
                         <h2>About Us</h2>
-                        <p>We believe brand interaction is key in communication. Real innovations and a positive customer experience are the heart of successful communication. No fake products and services. The customer is king, their lives and needs are the inspiration.</p>
+                        <p>{this.obj.description}</p>
                     </div>
                 </div>
 
@@ -348,42 +308,42 @@ export class AppHome {
                     <ul>
                         <li>
 							<a href="#">
-                                <img src="/assets/huruma/img/sidebar/1.jpg" alt="image" />
+								<img src="assets/img/sidebar/1.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/2.jpg" alt="image" />
+                                <img src="assets/img/sidebar/2.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/3.jpg" alt="image" />
+                                <img src="assets/img/sidebar/3.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/4.jpg" alt="image" />
+                                <img src="assets/img/sidebar/4.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/5.jpg" alt="image" />
+                                <img src="assets/img/sidebar/5.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/6.jpg" alt="image" />
+                                <img src="assets/img/sidebar/6.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/7.jpg" alt="image" />
+                                <img src="assets/img/sidebar/7.jpg" alt="image"/>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="/assets/huruma/img/sidebar/8.jpg" alt="image" />
+                                <img src="assets/img/sidebar/8.jpg" alt="image"/>
                             </a>
                         </li>
                     </ul>
@@ -393,38 +353,38 @@ export class AppHome {
                     <div class="contact-info">
                         <div class="contact-info-content">
                             <h2>
-                                <a href="tel:+0881306298615">
-                                    +088 130 629 8615
+                                <a href={this.obj.reachOut.phone1}>
+                                    {this.obj.reachOut.phone1}
                                 </a>
                                 <span>OR</span>
-                                <a href="mailto:huruma@gmail.com">
-                                    huruma@gmail.com
+                                <a href={this.obj.reachOut.email}>
+                                    {this.obj.reachOut.email}
                                 </a>
                             </h2>
     
                             <ul class="social">
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href={this.obj.reachOut.facebook} target="_blank">
                                         <i class="flaticon-facebook"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href={this.obj.reachOut.twitter} target="_blank">
                                         <i class="flaticon-twitter"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href={this.obj.reachOut.instagram} target="_blank">
                                         <i class="flaticon-instagram"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href={this.obj.reachOut.linkedin} target="_blank">
                                         <i class="flaticon-linkedin"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href={this.obj.reachOut.pinterest} target="_blank">
                                         <i class="flaticon-pinterest"></i>
                                     </a>
                                 </li>
@@ -447,12 +407,13 @@ export class AppHome {
                 <div id="rev_slider_1078_1" class="rev_slider fullwidthabanner" style={{ 'display': 'none' }} data-version="5.4.1">
                     <ul>
                         { /** SLIDE   */ }
-                        <li data-index="rs-3049" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="/assets/huruma/img/main-banner1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="First Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" >
+                        {this.obj.photos.slice(0,3).map(s =>(
+                            <li data-index="rs-3049" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="/assets/huruma/img/main-banner1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="First Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" >
                             { /** MAIN IMAGE  */ }
-                            <img src="/assets/huruma/img/main-banner1.jpg" alt="" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -500" data-offsetend="0 500" data-bgparallax="10" class="rev-slidebg" data-no-retina />
+                            <img src={s} alt="" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -500" data-offsetend="0 500" data-bgparallax="10" class="rev-slidebg" data-no-retina />
                             
                             <div class="tp-caption NotGeneric-Icon tp-resizeme" id="slide-3049-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-70']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                                Huruma
+                            {this.obj.name}
                             </div>
 
                             <div class="tp-caption NotGeneric-Title tp-resizeme" id="slide-3049-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-15','-15','-15','-15']" data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[-105%];z:0;rX:0deg;rY:0deg;rZ:-90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.1,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
@@ -460,7 +421,7 @@ export class AppHome {
                             </div>
 
                             <div class="tp-caption NotGeneric-SubTitle tp-resizeme" id="slide-3049-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['45','45','45','45']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                {/* <p>{this.obj.vision}</p> */}
                             </div>
 
                             <div class="tp-caption NotGeneric-btn tp-resizeme" id="slide-3045-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['115','115','115','115']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
@@ -470,14 +431,38 @@ export class AppHome {
                                 </a>
                             </div>
                         </li>
+                        ))}
+                        {/* <li data-index="rs-3049" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="/assets/huruma/img/main-banner1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="First Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" > */}
+                            { /** MAIN IMAGE  */ }
+                            {/* <img src="/assets/huruma/img/main-banner1.jpg" alt="" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -500" data-offsetend="0 500" data-bgparallax="10" class="rev-slidebg" data-no-retina />
+                            
+                            <div class="tp-caption NotGeneric-Icon tp-resizeme" id="slide-3049-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-70']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                            {this.obj.slug}
+                            </div>
+
+                            <div class="tp-caption NotGeneric-Title tp-resizeme" id="slide-3049-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-15','-15','-15','-15']" data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[-105%];z:0;rX:0deg;rY:0deg;rZ:-90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.1,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                                Bringing Smiles To Millions!
+                            </div>
+
+                            <div class="tp-caption NotGeneric-SubTitle tp-resizeme" id="slide-3049-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['45','45','45','45']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                                <p>{this.obj.vision}</p>
+                            </div>
+
+                            <div class="tp-caption NotGeneric-btn tp-resizeme" id="slide-3045-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['115','115','115','115']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                                <a href="#" class="default-btn">
+                                    Donate Now
+                                    <span></span>
+                                </a>
+                            </div>
+                        </li> */}
 
                         { /** SLIDE   */ }
-                        <li data-index="rs-3045" data-transition="zoomout" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="/assets/huruma/img/main-banner2.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Second Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" >
+                        {/* <li data-index="rs-3045" data-transition="zoomout" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="/assets/huruma/img/main-banner2.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Second Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" > */}
                             { /** MAIN IMAGE  */ }
-                            <img src="/assets/huruma/img/main-banner2.jpg" alt="" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 500" data-offsetend="0 -500" data-bgparallax="10" class="rev-slidebg" data-no-retina />
+                            {/* <img src={"/assets/huruma/img/main-banner2.jpg"} alt="" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 500" data-offsetend="0 -500" data-bgparallax="10" class="rev-slidebg" data-no-retina />
 
                             <div class="tp-caption NotGeneric-Icon tp-resizeme" id="slide-3049-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-70']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[-105%];z:0;rX:0deg;rY:0deg;rZ:-90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.1,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                                Huruma
+                            {this.obj.slug}
                             </div>
                             
                             <div class="tp-caption NotGeneric-Title tp-resizeme" id="slide-3045-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-15','-15','-15','-15']" data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.05,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
@@ -485,7 +470,7 @@ export class AppHome {
                             </div>
 
                             <div class="tp-caption NotGeneric-SubTitle tp-resizeme" id="slide-3045-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['45','45','45','45']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            {this.obj.vision}
                             </div>
 
                             <div class="tp-caption NotGeneric-btn tp-resizeme" id="slide-3045-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['115','115','115','115']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
@@ -494,15 +479,15 @@ export class AppHome {
                                     <span></span>
                                 </a>
                             </div>
-                        </li>
+                        </li> */}
 
                         { /** SLIDE   */ }
-                        <li data-index="rs-3046" data-transition="fadetotopfadefrombottom" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="/assets/huruma/img/main-banner3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Third Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" >
+                        {/* <li data-index="rs-3046" data-transition="fadetotopfadefrombottom" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="/assets/huruma/img/main-banner3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Third Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" > */}
                             { /** MAIN IMAGE  */ }
-                            <img src="/assets/huruma/img/main-banner3.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina />
+                            {/* <img src="/assets/huruma/img/main-banner3.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina />
 
                             <div class="tp-caption NotGeneric-Icon tp-resizeme rs-parallaxlevel-1" id="slide-3046-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-70']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.05,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                                Huruma
+                            {this.obj.slug}
                             </div>
                             
                             <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-3" id="slide-3046-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-15','-15','-15','-15']" data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rZ:-35deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.05,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'>
@@ -510,7 +495,7 @@ export class AppHome {
                             </div>
 
                             <div class="tp-caption NotGeneric-SubTitle tp-resizeme rs-parallaxlevel-2" id="slide-3046-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['45','45','45','45']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[-105%];z:0;rX:0deg;rY:0deg;rZ:-90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.1,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            {this.obj.vision}
                             </div>
 
                             <div class="tp-caption NotGeneric-btn tp-resizeme" id="slide-3045-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['115','115','115','115']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
@@ -519,7 +504,7 @@ export class AppHome {
                                     <span></span>
                                 </a>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                     <div class="tp-bannertimer" style={{ 'height': '7px', 'background-color': 'rgba(255, 255, 255, 0.25)' }}></div>
                 </div>
@@ -527,8 +512,36 @@ export class AppHome {
         </div>
         { /** End Slider Area  */ }
 
-        { /** Start About Area  */ }
-        <section class="about-section pt-100 pb-100">
+    {/*<!-- Start Top Feature Area --> */}
+        <section class="feature-section">
+            <div class="container-fluid">
+                <div class="row my-row justify-content-around align-items-stretch">
+                { this.obj.sdg.slice(0, 4).map(s => (
+                            <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                            <div class="feature-card">
+                                <div class="icon">
+                                    <img src={s.photo.url} alt="image"/>
+                                    <img src={s.photo.url} alt="image"/>
+                                </div>
+                                
+                                <h3>{s.name}</h3>
+                                <p>{s.description}</p>
+    
+                                <a href="#" class="feature-btn">
+                                    Join now +
+                                </a>
+                            </div>
+                        </div>
+                            )) }
+
+                </div>
+            </div>
+        </section>
+       {/*  <!-- End Top Feature Area -->*/}
+
+
+    {/*<!-- Start About Area --> */}
+        <section class="about-section pt-70 pb-100">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -537,11 +550,11 @@ export class AppHome {
                                 <i class="flaticon-care-about-plants"></i>
                                 About us
                             </span>
-                            <h3>An international independent Charity organization</h3>
+                            <h3>An International Independent Charity Organization</h3>
                             <p class="main-color">
-                                Your support will help us to make life better living for poor vulnerable children consectetur adipisicing elit.
+                                Your support will help us to make life better living for poor vulnerable children.
                             </p>
-                            <p>Konin wansis dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <p>{this.obj.description} </p>
 
                             <div class="about-btn">
                                 <a href="#" class="default-btn">
@@ -549,7 +562,7 @@ export class AppHome {
                                     <i class="flaticon-right"></i>
                                     <span></span>
                                 </a>
-                                <a class="optional-btn" href="#">
+                                <a class="optional-btn" href="assets/pages/about.html">
                                     More about us
                                     <i class="flaticon-right"></i>
                                 </a>
@@ -558,13 +571,16 @@ export class AppHome {
                     </div>
 
                     <div class="col-lg-6">
-                        <div class="about-image about-one-img" >
-                        <img src="/assets/huruma/img/about/1.jpg" class="shadow" alt="image" />
-                        <img src="/assets/huruma/img/about/2.jpg" class="shadow" alt="image" />
+                        <div class="about-image about-four">
+                            {this.obj.photos.slice(0,2).map(s =>(
+                                <img src={s} class="shadow" alt="image"/>
+                            ))}
+                            {/* <img src={this.obj.photos[1]} class="shadow" alt="image"/>
+                            <img src={this.obj.photos[0]} class="shadow" alt="image"/> */}
                         </div>
 
                         <div class="about-video">
-                            <a href="https://www.youtube.com/watch?v=uemObN8_dcw" class="video-btn popup-youtube">
+                            <a href={this.obj.video.url} class="video-btn popup-youtube">
                                 <i class="bx bx-play"></i>
                             </a>
                         </div>
@@ -572,10 +588,10 @@ export class AppHome {
                 </div>
             </div>
         </section>
-        { /** End About Area  */ }
+        {/* <!-- End About Area -->*/}
 
         { /** Start Country Area  */ }
-        <section class="country-section pb-100">
+        {/* <section class="country-section pb-100">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -690,16 +706,16 @@ export class AppHome {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> */}
         { /** End Country Area  */ }
 
         { /** Start Fun Facts Area  */ }
-        <section class="fun-facts-area">
+        {/* <section class="fun-facts-area">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-fun-fact">
-                            <p>Beneficiaries</p>
+                            <p>Average Rating</p>
                             <h3>
                                 <span class="sign-icon dolor">$</span>
                                 <span class="odometer" data-count="500">00</span>
@@ -739,7 +755,7 @@ export class AppHome {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> */}
         { /** End Fun Facts Area  */ }
 
         { /** Start Causes Area  */ }
@@ -750,14 +766,47 @@ export class AppHome {
                         <i class="flaticon-ribbon"></i>
                         Our Causes
                     </span>
-                    <h2>The causes we care about</h2>
-                    <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p>
-                </div>
+                    <h2>Our Projects</h2>
+                        
+                    </div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
+                <div class="row my-row justify-content-md-around align-items-stretch">
+                { this.obj.projects.slice(0, 3) .map(p => (
+                             <div class="col-lg-4 col-md-6">
+                             <div class="single-causes">
+                                 <img src={p.photo.url} alt="image"/ >
+                                 <div class="icon">
+                                     <i class="flaticon-book-1"></i>
+                                 </div>
+     
+                                 <div class="causes-content">
+                                     {/* <span>{p.photo.caption}</span> */}
+                                     <h3>{p.name}</h3>
+                                     {/* <p>{p.description}</p> */}
+     
+                                     {/* <div class="causes-progress-bar">
+                                         <div class="causes-progress-content">
+                                             <span>Raised: $5,000.00</span>
+                                             
+                                             <div class="text-right">
+                                                 <span>Goal: $8,000.00</span>
+                                             </div>
+                                         </div>
+                                         <p>Raised by 60 people within 10 days</p>
+                                     </div> */}
+                                     
+                                     <a href="single-causes.html" class="causes-btn-one">
+                                         Donate Now
+                                         <i class="flaticon-right"></i>
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                            )) }
+
+                    {/* <div class="col-lg-4 col-md-6">
                         <div class="single-causes">
-                            <img src="/assets/huruma/img/causes/1.jpg" alt="image" />
+                            <img src="assets/img/causes/1.jpg" alt="image"/>
                             <div class="icon">
                                 <i class="flaticon-book-1"></i>
                             </div>
@@ -788,7 +837,7 @@ export class AppHome {
 
                     <div class="col-lg-4 col-md-6">
                         <div class="single-causes">
-                            <img src="/assets/huruma/img/causes/2.jpg" alt="image" />
+                            <img src="assets/img/causes/2.jpg" alt="image"/>
                             <div class="icon">
                                 <i class="flaticon-laptop"></i>
                             </div>
@@ -819,7 +868,7 @@ export class AppHome {
 
                     <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                         <div class="single-causes">
-                            <img src="/assets/huruma/img/causes/3.jpg" alt="image" />
+                            <img src="assets/img/causes/3.jpg" alt="image"/>
                             <div class="icon">
                                 <i class="flaticon-blood-bag"></i>
                             </div>
@@ -846,115 +895,76 @@ export class AppHome {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
         { /** End Causes Area  */ }
 
-        { /** Start Donor Area  */ }
-        <section class="donor-section pt-100 pb-70">
-            <div class="container">
-                <div class="section-title">
-                    <h2>To have become a volunteer or donor</h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="donor-item">
-                            <div class="icon">
-                                <i class="flaticon-support"></i>
-                            </div>
-                            <h3>Select Position</h3>
-                            <p>Lorem ipsum dolor siamet ectetur adipisicing</p>
-                            <a href="#" class="donor-btn">Give Requist +</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="donor-item">
-                            <div class="icon">
-                                <i class="flaticon-confirmation"></i>
-                            </div>
-                            <h3>Get Confirmation</h3>
-                            <p>Dolor Lorem ipsumsiamet ectetur adipisicin</p>
-                            <a href="#" class="donor-btn">Get Reaction +</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                        <div class="donor-item">
-                            <div class="icon">
-                                <i class="flaticon-enjoy"></i>
-                            </div>
-                            <h3>Get Enjoyed</h3>
-                            <p>Lorem ipsum dolor siamet ectetur adipisicing</p>
-                            <a href="#" class="donor-btn">Enjoy Now +</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lines">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-        </section>
-        { /** End Donor Area  */ }
-
+        
         { /** Start Solve Area  */ }
         <section class="solve-section pt-100 pb-70">
             <div class="container">
                 <div class="section-title">
                     <span>
                         <i class="flaticon-to-do-list"></i>
-                        What We Do
+                        Activities
                     </span>
                     <h2>A mission to solve a problem</h2>
-                    <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p>
+                    <p>{this.obj.vision}</p>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="row align-items-stretch">
+                    {this.obj.activities.slice(0,4).map(s => (
+                        <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="solve-item">
                             <div class="icon">
-                                <img src="/assets/huruma/img/solve/1.png" alt="image" />
+                                <img src="assets/img/solve/1.png" alt="image"/>
+                            </div>
+                            <h3>{s}</h3>
+                            {/* <p>Roknin sanso dolor sit amet consecteturadipisicingitsed do eiusmod tempor.</p> */}
+                        </div>
+                    </div>
+                    ))}
+                    {/* <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="solve-item">
+                            <div class="icon">
+                                <img src="assets/img/solve/1.png" alt="image"/>
                             </div>
                             <h3>Education Facilities</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet Rem in dolor</p>
+                            <p>Roknin sanso dolor sit amet consecteturadipisicingitsed do eiusmod tempor.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="solve-item">
                             <div class="icon">
-                                <img src="/assets/huruma/img/solve/2.png" alt="image" />
+                                <img src="assets/img/solve/2.png" alt="image"/>
                             </div>
                             <h3>Medical Facilities</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet Rem in dolor</p>
+                            <p>Dobani Kulie dolor sit amet consecteturadipisicingitsed do eiusmod tempor.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="solve-item">
                             <div class="icon">
-                                <img src="/assets/huruma/img/solve/3.png" alt="image" />
+                                <img src="assets/img/solve/3.png" alt="image"/>
                             </div>
                             <h3>Healthy Food</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet Rem in dolor</p>
+                            <p>Horith ipsum dolor sit amet consecteturadipisicingitsed do eiusmod tempor.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="solve-item">
                             <div class="icon">
-                                <img src="/assets/huruma/img/solve/4.png" alt="image" />
+                                <img src="assets/img/solve/4.png" alt="image"/>
                             </div>
                             <h3>Pure Water</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet Rem in dolor</p>
+                            <p>Warek ipsum dolor sit amet consecteturadipisicingitsed do eiusmod tempor.</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
@@ -966,7 +976,7 @@ export class AppHome {
                 <div class="row">
                     <div class="col-lg-6 p-0">
                         <div class="mission-image">
-                            <img src="/assets/huruma/img/mission.png" alt="image" />
+                            <img src="assets/7.jpeg"/>
                         </div>
                     </div>
 
@@ -989,18 +999,18 @@ export class AppHome {
 											Our Vision
 										</a>
 									</li>
-									<li>
+									{/* <li>
 										<a href="#">
 											Our Goal
 										</a>
-									</li>
+									</li> */}
                                 </ul>
                                 
 								<div class="tab_content">
 									<div class="tabs_item">
-										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea  quis nostrud exercitation</p>
+										<p>{this.obj.mission}</p>
 
-										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
+										{/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p> */}
 										<a class="default-btn" href="#">
                                             Our Mission
                                             <span></span>
@@ -1009,9 +1019,9 @@ export class AppHome {
                                     </div>
 
                                     <div class="tabs_item">
-										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea  quis nostrud exercitation</p>
+										<p>{this.obj.vision}</p>
 
-										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
+										{/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p> */}
 										<a class="default-btn" href="#">
                                             Our Mission
                                             <span></span>
@@ -1019,8 +1029,8 @@ export class AppHome {
 										</a>
                                     </div>
 
-                                    <div class="tabs_item">
-										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea  quis nostrud exercitation</p>
+                                    {/* <div class="tabs_item">
+										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea </p>
 
 										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
 										<a class="default-btn" href="#">
@@ -1028,7 +1038,7 @@ export class AppHome {
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
-                                    </div>
+                                    </div> */}
 								</div>
 							</div>
 						</div>
@@ -1037,6 +1047,74 @@ export class AppHome {
             </div>
         </section>
         { /** End Mission Area  */ }
+        
+
+        { /** Start Donor Area  */ }
+        <section class="donor-section pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Volunteer Here</h2>
+                </div>
+
+                <div class="row justify-content-around">
+                    {this.obj.whyVolunteerHere.slice(0,3).map(m=>(
+                        <div class="col-lg-4 col-md-6">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-support"></i>
+                            </div>
+                            <h3>{m.text}</h3>
+                            {/* <p>Lorem ipsum dolor siamet ecteturadipisicing</p> */}
+                            
+                        </div>
+                    </div>
+                    ))}
+                    {/* <div class="col-lg-4 col-md-6">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-support"></i>
+                            </div>
+                            <h3>Select Position</h3>
+                            <p>Lorem ipsum dolor siamet ecteturadipisicing</p>
+                            <a href="#" class="donor-btn">Give Requist +</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-confirmation"></i>
+                            </div>
+                            <h3>Get Confirmation</h3>
+                            <p>Dolor Lorem ipsumsiamet ecteturadipisicin</p>
+                            <a href="#" class="donor-btn">Get Reaction +</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-md-6 offset-md-3 offset-lg-0">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-enjoy"></i>
+                            </div>
+                            <h3>Get Enjoyed</h3>
+                            <p>Lorem ipsum dolor siamet ecteturadipisicing</p>
+                            <a href="#" class="donor-btn">Enjoy Now +</a>
+                        </div>
+                    </div> */}
+                </div>
+            </div>
+
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        { /** End Donor Area  */ }
+
+
+
+
 
         { /** Start Team Area  */ }
         <section class="team-section pt-100 pb-70">
@@ -1049,14 +1127,14 @@ export class AppHome {
                                     <i class="flaticon-support"></i>
                                     Meet Our Team
                                 </span>
-                                <h2>Talented Team behind Huruma</h2>
-                                <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p>
+                                <h2>Talented Team behind {this.obj.name}</h2>
+                                {/* <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p> */}
                             </div>
                         </div>
 
                         <div class="col-lg-5">
                             <div class="team-btn text-right">
-                                <a href="#" class="optional-btn">
+                                <a href="assets/pages/team.html" class="optional-btn">
                                     Meet Our Team
                                     <i class="flaticon-right"></i>
                                 </a>
@@ -1065,121 +1143,198 @@ export class AppHome {
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="/assets/huruma/img/team/1.png" alt="image" />
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                <div class="row justify-content-md-around">
+                    {this.obj.team.slice(0,3).map(s => (
+                        <div class="col-lg-3 col-sm-6">
+                        <div class="single-team-member">
+                            <div class="team-image">
+                                <img src={s.photo.url} alt="image"/>
                             </div>
     
-                            <div class="content">
+                            <ul class="social-btn">
+                                <li>
+                                    <a href={s.reachOut.facebook}>
+                                        <i class="flaticon-facebook"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href={s.reachOut.twitter}>
+                                        <i class="flaticon-twitter"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href={s.reachOut.instagram}>
+                                        <i class="flaticon-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <div class="member-content">
+                                <h3>{s.name}</h3>
+                                <span>{s.role}</span>
+                            </div>
+
+                            <div class="team-icon">
+                                <i class="flaticon-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                    {/* <div class="col-lg-3 col-sm-6">
+                        <div class="single-team-member">
+                            <div class="team-image">
+                                <img src="assets/img/team/7.png" alt="image"/>
+                            </div>
+    
+                            <ul class="social-btn">
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-facebook"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-twitter"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <div class="member-content">
                                 <h3>Alex Maxwel</h3>
-                                <span>Founder</span>
+                                <span>CEO & Founder</span>
+                            </div>
+
+                            <div class="team-icon">
+                                <i class="flaticon-plus"></i>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="/assets/huruma/img/team/2.png" alt="image" />
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team-member">
+                            <div class="team-image">
+                                <img src="assets/img/team/8.png" alt="image"/>
                             </div>
     
-                            <div class="content">
-                                <h3>Williams Halimton</h3>
+                            <ul class="social-btn">
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-facebook"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-twitter"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <div class="member-content">
+                                <h3>Smith Jhon</h3>
                                 <span>Manager</span>
                             </div>
+
+                            <div class="team-icon">
+                                <i class="flaticon-plus"></i>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6 offset-sm-3 offset-lg-0">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="/assets/huruma/img/team/3.png" alt="image" />
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team-member">
+                            <div class="team-image">
+                                <img src="assets/img/team/9.png" alt="image"/>
                             </div>
     
-                            <div class="content">
-                                <h3>Juhon Dew</h3>
-                                <span>CEO</span>
+                            <ul class="social-btn">
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-facebook"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-twitter"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <div class="member-content">
+                                <h3>Ched Kurtsovski</h3>
+                                <span>Volunteer</span>
+                            </div>
+
+                            <div class="team-icon">
+                                <i class="flaticon-plus"></i>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team-member">
+                            <div class="team-image">
+                                <img src="assets/img/team/10.png" alt="image"/>
+                            </div>
+    
+                            <ul class="social-btn">
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-facebook"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-twitter"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <i class="flaticon-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <div class="member-content">
+                                <h3>Ched Kurtsovski</h3>
+                                <span>Volunteer</span>
+                            </div>
+
+                            <div class="team-icon">
+                                <i class="flaticon-plus"></i>
+                            </div>
+                        </div>
+                    </div> */}
                 </div>
             </div>
         </section>
         { /** End Team Area  */ }
 
         { /** Start Events Area  */ }
-        <section class="event-section pt-100">
+        {/**<section class="event-section pt-100">
             <div class="container">
                 <div class="section-title">
                     <span>
@@ -1332,7 +1487,7 @@ export class AppHome {
                     </div>
                 </div>
             </div>
-        </section>
+        </section>*/}
         { /** End Events Area  */ }
 
         { /** Start Testimonials Area  */ }
@@ -1346,11 +1501,46 @@ export class AppHome {
                     <h2>Don’t Believe Us? See review</h2>
                 </div>
                 <div class="testimonials-slider owl-carousel owl-theme">
-                    <div class="testimonials-item">
+                    {this.obj.review.slice(0).map( s=> (
+                        <div class="testimonials-item">
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="testimonials-info">
-                                    <img src="/assets/huruma/img/testimonials/1.jpg" alt="image" />
+                                    <img src={s.volunteer.photo.url} alt="image"/>
+                                    <h3>{s.name}</h3>
+                                    <span><b>Tamil Nadu</b></span>
+                                    <ul class="social-info">
+                                        
+                                        <li>
+                                            <i class='bx bxs-star'></i>
+                                        </li>
+                                        <li>
+                                            <i class='bx bxs-star'></i>
+                                        </li>
+                                        <li>
+                                            <i class='bx bxs-star'></i>
+                                        </li>
+                                        <li>
+                                            <i class='bx bxs-star'></i>
+                                        </li>
+                                        <li>
+                                            <i class='bx bxs-star'></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <h3>{s.event.name}</h3>
+                                <p>{s.feedback}</p>
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                    {/* <div class="testimonials-item">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="testimonials-info">
+                                    <img src="assets/img/testimonials/1.jpg" alt="image"/>
                                     <h3>Juhan Luis</h3>
                                     <span>Charity Bingo <b>Uk</b></span>
                                     <ul class="social-info">
@@ -1382,7 +1572,7 @@ export class AppHome {
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="testimonials-info">
-                                    <img src="/assets/huruma/img/testimonials/2.jpg" alt="image" />
+                                    <img src="assets/img/testimonials/2.jpg" alt="image"/>
                                     <h3>juhon Dew</h3>
                                     <span>Charity Bingo <b>Canada</b></span>
                                     <ul class="social-info">
@@ -1409,12 +1599,12 @@ export class AppHome {
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, autem totam. Et ipsam similique consequatur! Numquam, inventore delectus sequi, ullam, placeat molestias velit dolore praesentium ea distinctio cum vitae aperiam Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, veniam reprehenderit. Id sed itaque quam voluptates deleniti autem facilis sequi! Voluptatibus voluptas dolorum nisi tenetur laboriosam modi quis.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
             <div class="testimonials-shape">
-                <img src="/assets/huruma/img/testimonials/shape.png" alt="image" />
+                <img src="assets/img/testimonials/shape.png" alt="image"/>
             </div>
         </section>
         { /** End Testimonials Area  */ }
@@ -1423,8 +1613,10 @@ export class AppHome {
         <section class="donate-section ptb-100">
             <div class="container">
                 <div class="section-title">
-                    <h2>Want you know How Can  Help?</h2>
-                    <p>Toiken ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntlabore et dolore magna aliqua. Ut enim ad minim.</p>
+                    <h2>Why Help Matters?</h2>
+                    <p>{this.obj.whyHelpMatters.slice(0,3).map(s=>(
+                        <p>{s.text}</p>
+                    ))}</p>
                     <a href="#" class="donate-btn">
                         Donate Now
                         <i class="flaticon-right"></i>
@@ -1433,11 +1625,15 @@ export class AppHome {
             </div>
 
             <div class="default-shape">
-                <img src="/assets/huruma/img/donate/1.png" alt="image" />
-                <img src="/assets/huruma/img/donate/2.png" alt="image" />
+                <img src="assets/img/donate/1.png" alt="image"/>
+                <img src="assets/img/donate/2.png" alt="image"/>
             </div>
         </section>
         { /** End Donate Area  */ }
+
+
+        
+
 
         { /** Start Blog Area  */ }
         <section class="blog-section pt-100 pb-70">
@@ -1450,10 +1646,31 @@ export class AppHome {
                     <h2>Check Out Our Latest News</h2>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="row justify-content-md-around align-self-stretch">
+                    {this.obj.media.slice(0,3).map(s=>(
+                        <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-blog">
-                            <img src="/assets/huruma/img/blog/1.jpg" alt="image" />
+                            <img src={s.photo.url} alt="image"/>
+
+                            <div class="content">
+                                <a href={s.link}>
+                                    <i class='bx bx-user'></i>
+                                </a>
+                                <span>{s.date._seconds}</span>
+                                <h3>
+                                    <a href={s.link}>
+                                        {s.name}
+                                    </a>
+                                </h3>
+                                <a href="single-blog.html" class="blog-btn">Read more +</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    ))}
+                    {/* <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-blog">
+                            <img src="assets/img/blog/1.jpg" alt="image"/>
 
                             <div class="content">
                                 <a href="#">
@@ -1472,7 +1689,7 @@ export class AppHome {
 
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-blog">
-                            <img src="/assets/huruma/img/blog/2.jpg" alt="image" />
+                            <img src="assets/img/blog/2.jpg" alt="image"/>
 
                             <div class="content">
                                 <a href="#">
@@ -1491,13 +1708,13 @@ export class AppHome {
 
                     <div class="col-lg-4 col-md-6 col-sm-6 offset-sm-3 offset-lg-0">
                         <div class="single-blog">
-                            <img src="/assets/huruma/img/blog/3.jpg" alt="image" />
+                            <img src="assets/img/blog/3.jpg" alt="image"/>
 
                             <div class="content">
                                 <a href="#">
                                     <i class='bx bx-user'></i>
                                 </a>
-                                <span>Healthy, 23 June</span>
+                                <span>Healthy, 21 June</span>
                                 <h3>
                                     <a href="#">
                                         The Plant-Powered Dietitian To Consume Habit
@@ -1506,192 +1723,13 @@ export class AppHome {
                                 <a href="single-blog.html" class="blog-btn">Read more +</a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
         { /** End Blog Area  */ }
 
-        { /** Start Footer Area  */ }
-        <footer class="footer-section pt-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Contact info</h3>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-pin"></i>
-                                <h3>Location</h3>
-                                <span>205 Fida Walinton, Tongo<br /> New York, Canada</span>
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-call"></i>
-                                <h3>Call Us</h3>
-                                <span><a href="tel:+882-569-756">987-0986-0987</a></span>
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-email"></i>
-                                <h3>Email Us</h3>
-                                <span>
-                                    <a href="mailto:hello@huruma.com">
-                                        support@huruma.com
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Our Support</h3>
-
-                            <ul class="footer-quick-links">
-                                <li>
-                                    <a href="#">
-                                        Private Policies
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Donate Now
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Become a Volunteer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Careers
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Paid programs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Partnership
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Our Services</h3>
-
-                            <ul class="footer-quick-links">
-                                <li>
-                                    <a href="#">
-                                        Donate
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Sponsor
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Fundraise
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Volunteer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Partner
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Jobs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Form 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Recent News</h3>
-
-                            <div class="footer-news">
-                               <a href="single-blog.html">
-                                   <img src="/assets/huruma/img/footer-news/1.jpg" alt="image" />
-                                    <h4>Support about poverty to poor family</h4>
-                                    <span>Poor, 22 January</span>
-                               </a>
-                            </div>
-
-                            <div class="footer-news">
-                               <a href="single-blog.html">
-                                   <img src="/assets/huruma/img/footer-news/2.jpg" alt="image" />
-                                    <h4>Mostly suffered school Boys care</h4>
-                                    <span>Health, 24 February</span>
-                               </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="copyright-area">
-                <div class="container">
-                    <div class="copyright-area-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4">
-                                <div class="copyright-logo">
-                                    <img src="/assets/huruma/img/white-logo.png" alt="image" />
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <p>
-                                    <i class="far fa-copyright"></i> 
-                                    2020 Huruma. All Rights Reserved by
-                                    <a href="https://envytheme.com/" target="_blank">
-                                        EnvyTheme
-                                    </a>
-                                </p>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <ul>
-                                    <li>
-                                        <a href="terms-condition.html">Terms & Conditions</a>
-                                    </li>
-                                    <li>
-                                        <a href="privacy-policy.html">Privacy Policy</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        { /** End Footer Area  */ }
+        <app-footer></app-footer>
 
         { /** Start Go Top Section  */ }
         <div class="go-top">
