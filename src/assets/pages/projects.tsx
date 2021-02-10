@@ -1,10 +1,10 @@
 import { Component, State, h } from '@stencil/core';
 
 @Component({
-    tag: 'app-gallery',
+    tag: 'app-projects',
     
 })
-export class AppGallery {
+export class AppProjects {
 
     @State() obj: any = {
         name:"",
@@ -18,7 +18,6 @@ export class AppGallery {
     render() {
         return ( <span>
             <ion-content overflow-scroll="true">
-            
             <app-header></app-header>
 
             { /** Start Navbar Area  */ }
@@ -465,34 +464,294 @@ export class AppGallery {
 </div>
 { /** End Slider Area  */ }
 
+     
+{ /** Start Causes Area  */ }
+        <section class="causes-section pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <span>
+                        <i class="flaticon-ribbon"></i>
+                        Our Causes
+                    </span>
+                    <h2>Our Projects</h2>
+                        
+                    </div>
 
+                <div class="row my-row justify-content-md-around align-items-stretch">
+                { this.obj.projects.slice(0) .map(p => (
+                             <div class="col-lg-4 col-md-6">
+                             <div class="single-causes">
+                                 <img src={p.photo.url} alt="image"/ >
+                                 <div class="icon">
+                                     <i class="flaticon-book-1"></i>
+                                 </div>
+                                 {/* <script>console.log("Hello World");
+                                console.log({p});</script> */}
+                                 <div class="causes-content">
+                                     {/* <span>{p.photo.caption}</span> */}
+                                     <h3>{p.name}</h3>
+                                     {/* <p>{p.description}</p> */}
+     
+                                     {/* <div class="causes-progress-bar">
+                                         <div class="causes-progress-content">
+                                             <span>Raised: $5,000.00</span>
+                                             
+                                             <div class="text-right">
+                                                 <span>Goal: $8,000.00</span>
+                                             </div>
+                                         </div>
+                                         <p>Raised by 60 people within 10 days</p>
+                                     </div> */}
+                                     <script>
+                                         var hello="{p.id}"+".html";
+                                         console.log(hello);
+                                         {/* document.getElementById('HelloWorld').setAttribute('href', hello); */}
+                                     </script>
+                                     <a href="project1.html" class="causes-btn-one">
+                                         Donate Now
+                                         <i class="flaticon-right"></i>
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                            )) }
 
-        {/* <!-- Start Gallery Area --> */}
-        <div class="gallery-area pt-100 pb-70">
-            <div class="section-title">
-                <h2>Gallery</h2>
-                <p></p>
-            </div>
+                    {/* <div class="col-lg-4 col-md-6">
+                        <div class="single-causes">
+                            <img src="assets/img/causes/1.jpg" alt="image"/>
+                            <div class="icon">
+                                <i class="flaticon-book-1"></i>
+                            </div>
 
-            <div class="container-fluid">
-                <div class="row justify-content-around">
-                    {this.obj.photos.slice(0).map(s => (
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-gallery-box">
-                            <img src={s} alt="image"/>
-    
-                            <a href={s} class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class="flaticon-search"></i>
-                            </a>
+                            <div class="causes-content">
+                                <span>#Education</span>
+                                <h3>Education for poor child</h3>
+                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
+
+                                <div class="causes-progress-bar">
+                                    <div class="causes-progress-content">
+                                        <span>Raised: $5,000.00</span>
+                                        
+                                        <div class="text-right">
+                                            <span>Goal: $8,000.00</span>
+                                        </div>
+                                    </div>
+                                    <p>Raised by 60 people within 10 days</p>
+                                </div>
+                                
+                                <a href="single-causes.html" class="causes-btn-one">
+                                    Donate Now
+                                    <i class="flaticon-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    ))}
-                    
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-causes">
+                            <img src="assets/img/causes/2.jpg" alt="image"/>
+                            <div class="icon">
+                                <i class="flaticon-laptop"></i>
+                            </div>
+
+                            <div class="causes-content">
+                                <span>#Donation</span>
+                                <h3>Massive donation to poor</h3>
+                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
+
+                                <div class="causes-progress-bar">
+                                    <div class="causes-progress-content">
+                                        <span>Raised: $4,000.00</span>
+                                        
+                                        <div class="text-right">
+                                            <span>Goal: $8,000.00</span>
+                                        </div>
+                                    </div>
+                                    <p>Raised by 40 people within 12 days</p>
+                                </div>
+                                
+                                <a href="single-causes.html" class="causes-btn-one">
+                                    Donate Now
+                                    <i class="flaticon-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+                        <div class="single-causes">
+                            <img src="assets/img/causes/3.jpg" alt="image"/>
+                            <div class="icon">
+                                <i class="flaticon-blood-bag"></i>
+                            </div>
+
+                            <div class="causes-content">
+                                <span>#Helpless</span>
+                                <h3>Huge help to homeless pupil</h3>
+                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
+
+                                <div class="causes-progress-bar">
+                                    <div class="causes-progress-content">
+                                        <span>Raised: $1,000.00</span>
+                                        
+                                        <div class="text-right">
+                                            <span>Goal: $5,000.00</span>
+                                        </div>
+                                    </div>
+                                    <p>Raised by 50people within 20days</p>
+                                </div>
+                                
+                                <a href="single-causes.html" class="causes-btn-one">
+                                    Donate Now
+                                    <i class="flaticon-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
+            </div>
+        </section>
+        { /** End Causes Area  */ }
+
+
+{ /** Start Team Area  */ }
+<section class="team-section pt-100 pb-70">
+    <div class="container">
+        <div class="team-title-area">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="section-title text-left">
+                        <span>
+                            <i class="flaticon-support"></i>
+                            Meet Our Team
+                        </span>
+                        <h2>Talented Team behind {this.obj.name}</h2>
+                        {/* <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p> */}
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="team-btn text-right">
+                        <a href="assets/pages/team.html" class="optional-btn">
+                            Meet Our Team
+                            <i class="flaticon-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        {/* <!-- End Gallery Area --> */}
-                    <app-footer></app-footer>
+
+        <div class="row justify-content-md-around">
+            {this.obj.team.slice(0,3).map(s => (
+                <div class="col-lg-3 col-sm-6">
+                <div class="single-team-member">
+                    <div class="team-image">
+                        <img src={s.photo.url} alt="image"/>
+                    </div>
+
+                    <ul class="social-btn">
+                        <li>
+                            <a href={s.reachOut.facebook}>
+                                <i class="flaticon-facebook"></i>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href={s.reachOut.twitter}>
+                                <i class="flaticon-twitter"></i>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href={s.reachOut.instagram}>
+                                <i class="flaticon-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="member-content">
+                        <h3>{s.name}</h3>
+                        <span>{s.role}</span>
+                    </div>
+
+                    <div class="team-icon">
+                        <i class="flaticon-plus"></i>
+                    </div>
+                </div>
+            </div>
+            ))}
+            
+        </div>
+    </div>
+</section>
+{ /** End Team Area  */ }
+
+{ /** Start Testimonials Area  */ }
+<section class="testimonials-section pt-140 pb-100">
+    <div class="container">
+        <div class="section-title">
+            <span>
+                <i class="flaticon-testimonial"></i>
+                Testimonials
+            </span>
+            <h2>Don’t Believe Us? See review</h2>
+        </div>
+        <div class="testimonials-slider owl-carousel owl-theme">
+            {this.obj.review.slice(0).map( s=> (
+                <div class="testimonials-item">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="testimonials-info">
+                            <img src={s.volunteer.photo.url} alt="image"/>
+                            <h3>{s.name}</h3>
+                            <span><b>Tamil Nadu</b></span>
+                            <ul class="social-info">
+                                
+                                <li>
+                                    <i class='bx bxs-star'></i>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-star'></i>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-star'></i>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-star'></i>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-star'></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <h3>{s.event.name}</h3>
+                        <p>{s.feedback}</p>
+                    </div>
+                </div>
+            </div>
+            ))}
+            
+        </div>
+    </div>
+
+    <div class="testimonials-shape">
+        <img src="assets/img/testimonials/shape.png" alt="image"/>
+    </div>
+</section>
+{ /** End Testimonials Area  */ }
+
+
+<app-footer></app-footer>
+
+{ /** Start Go Top Section  */ }
+<div class="go-top">
+    <i class="bx bx-chevron-up"></i>
+    <i class="bx bx-chevron-up"></i>
+</div>
+{ /** End Go Top Section  */ }
+
             </ion-content>
         
         </span> );

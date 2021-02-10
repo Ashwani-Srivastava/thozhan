@@ -112,6 +112,10 @@ p:last-child {
   vertical-align: middle;
 }
 
+.image-resize {
+  height: 300px !important;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -2565,6 +2569,11 @@ Fun Facts Area CSS
 /*================================================
 Causes Area CSS
 =================================================*/
+/* .my-container {
+  height: 520px;
+  width: 360px;
+  object-fit: cover;
+} */
 .single-causes {
   margin-bottom: 30px;
   position: relative;
@@ -3202,10 +3211,6 @@ Mission Area CSS
   background-size: cover;
   background-position: center center;
   height: 100%;
-}
-
-.mission-image img {
-  display: none;
 }
 
 .mission-area {
@@ -4711,6 +4716,52 @@ Main Banner Area CSS
   -webkit-animation: ripple 2s linear infinite;
   animation: ripple 2s linear infinite;
 }
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+.rating {
+  width: 90px;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  position: relative;
+}
+
+.rating > label {
+  float: right;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 1.1em;
+  cursor: pointer;
+  color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+  color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+  content: '\2605';
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+}
 
 .banner-slider-wrap .banner-video .video-btn:hover,
 .banner-slider-wrap .banner-video .video-btn .video-content .video-btn:focus {
@@ -5095,7 +5146,10 @@ Process Area CSS
 .process-item {
   position: relative;
 }
-
+.define-image {
+  width: 360px;
+  height: 500px;
+}
 .process-item .icon {
   display: inline-block;
   height: 70px;

@@ -1,10 +1,10 @@
 import { Component, State, h } from '@stencil/core';
 
 @Component({
-    tag: 'app-home',
-    styleUrl: 'app-home.css',
+    tag: 'app-home2',
+    
 })
-export class AppHome {
+export class AppHome2 {
 
     @State() obj: any = {
         name:"",
@@ -47,10 +47,10 @@ export class AppHome {
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="assets/pages/home.html" class="nav-link active">
+                                    <a href="home.html" class="nav-link active">
                                         <span>o1</span>
                                         Home 
-                                        {/* <i class='bx bx-chevron-down'></i> */}
+                                        
                                     </a>
                                     {/* <ul class="dropdown-menu">
                                         <li class="nav-item">
@@ -86,7 +86,7 @@ export class AppHome {
                                     </a>
                                 </li>
 
-                                {/* <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <span>o3</span>
                                         Causes 
@@ -105,7 +105,7 @@ export class AppHome {
                                             </a>
                                         </li>
                                     </ul>
-                                </li> */}
+                                </li>
 
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
@@ -116,19 +116,19 @@ export class AppHome {
 
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="assets/pages/about.html" class="nav-link">
+                                            <a href="about.html" class="nav-link">
                                                 About
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="assets/pages/team.html" class="nav-link">
+                                            <a href="team.html" class="nav-link">
                                                 Team
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="assets/pages/gallery.html" class="nav-link">
+                                            <a href="gallery.html" class="nav-link">
                                                 Gallery
                                             </a>
                                         </li>
@@ -188,19 +188,19 @@ export class AppHome {
                                         </li> */}
                                     
                                         <li class="nav-item">
-                                            <a href="assets/pages/projects.html" class="nav-link">
+                                            <a href="projects.html" class="nav-link">
                                                 Projects
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="assets/pages/media.html" class="nav-link">
+                                            <a href="media.html" class="nav-link">
                                                 Media
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="assets/pages/contact.html" class="nav-link">
+                                            <a href="contact.html" class="nav-link">
                                                 Contact
                                             </a>
                                         </li>
@@ -210,7 +210,7 @@ export class AppHome {
                                 
 
                                 <li class="nav-item">
-                                    <a href="assets/pages/contact.html" class="nav-link">
+                                    <a href="contact.html" class="nav-link">
                                         <span>o6</span>
                                         Contact
                                     </a>
@@ -255,7 +255,7 @@ export class AppHome {
                     </div>
                 </div>
 
-                {/* <div class="sidebar-instagram-feed">
+                <div class="sidebar-instagram-feed">
                     <h2>Instagram</h2>
                     <ul>
                         <li>
@@ -299,7 +299,7 @@ export class AppHome {
                             </a>
                         </li>
                     </ul>
-                </div> */}
+                </div>
 
                 <div class="sidebar-contact-area">
                     <div class="contact-info">
@@ -479,9 +479,9 @@ export class AppHome {
                                 <h3>{s.name}</h3>
                                 <p>{s.description}</p>
     
-                                {/* <a href="#" class="feature-btn">
+                                <a href="#" class="feature-btn">
                                     Join now +
-                                </a> */}
+                                </a>
                             </div>
                         </div>
                             )) }
@@ -514,7 +514,7 @@ export class AppHome {
                                     <i class="flaticon-right"></i>
                                     <span></span>
                                 </a>
-                                <a class="optional-btn" href="assets/pages/about.html">
+                                <a class="optional-btn" href="about.html">
                                     More about us
                                     <i class="flaticon-right"></i>
                                 </a>
@@ -922,6 +922,83 @@ export class AppHome {
         </section>
         { /** End Solve Area  */ }
 
+        { /** Start Mission Area  */ }
+        <section class="mission-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 p-0">
+                        {/* <div class="mission-image"> */}
+                            <img src={this.obj.photos[4]} height="590" width="930"/>
+                        {/* </div> */}
+                    </div>
+
+                    <div class="col-lg-6">
+						<div class="mission-tab">
+                            <span>
+                                <i class="flaticon-target"></i>
+                                Our Mission
+                            </span>
+							<h2>Concern about Our Mission</h2>
+							<div class="tab mission-list-tab">
+								<ul class="tabs">
+									<li>
+										<a href="#">
+											Our Mission
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											Our Vision
+										</a>
+									</li>
+									{/* <li>
+										<a href="#">
+											Our Goal
+										</a>
+									</li> */}
+                                </ul>
+                                
+								<div class="tab_content">
+									<div class="tabs_item">
+										<p>{this.obj.mission}</p>
+
+										{/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p> */}
+										<a class="default-btn" href="#">
+                                            Our Mission
+                                            <span></span>
+                                            <i class="flaticon-right"></i>
+										</a>
+                                    </div>
+
+                                    <div class="tabs_item">
+										<p>{this.obj.vision}</p>
+
+										{/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p> */}
+										<a class="default-btn" href="#">
+                                            Our Mission
+                                            <span></span>
+                                            <i class="flaticon-right"></i>
+										</a>
+                                    </div>
+
+                                    {/* <div class="tabs_item">
+										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea </p>
+
+										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
+										<a class="default-btn" href="#">
+                                            Our Mission
+                                            <span></span>
+                                            <i class="flaticon-right"></i>
+										</a>
+                                    </div> */}
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+            </div>
+        </section>
+        { /** End Mission Area  */ }
         
 
         { /** Start Donor Area  */ }
@@ -1009,7 +1086,7 @@ export class AppHome {
 
                         <div class="col-lg-5">
                             <div class="team-btn text-right">
-                                <a href="assets/pages/team.html" class="optional-btn">
+                                <a href="team.html" class="optional-btn">
                                     Meet Our Team
                                     <i class="flaticon-right"></i>
                                 </a>
@@ -1018,7 +1095,7 @@ export class AppHome {
                     </div>
                 </div>
 
-                <div class="row justify-content-sm-around">
+                <div class="row justify-content-md-around">
                     {this.obj.team.slice(0,3).map(s => (
                         <div class="col-lg-3 col-sm-6">
                         <div class="single-team-member">

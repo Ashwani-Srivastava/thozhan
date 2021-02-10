@@ -20,249 +20,230 @@ export class AppTeam {
             <ion-content overflow-scroll="true">
             <app-header></app-header>
 
-{ /** Start Navbar Area  */ }
-<div class="navbar-area navbar-default navbar-fixed-top">
-    <div class="huruma-responsive-nav">
-        <div class="container">
-            <div class="huruma-responsive-menu">
-                <div class="logo">
-                    <a href="index.html">
-                    <img src={this.obj.logo.url} class="white-logo" alt="logo" height="165" width="186"/>
-                    <img src={this.obj.logo.url} class="black-logo" height="68" width="202" alt="image"/>
-                    </a>
+            { /** Start Navbar Area  */ }
+        <div class="navbar-area navbar-default navbar-fixed-top">
+            <div class="huruma-responsive-nav">
+                <div class="container">
+                    <div class="huruma-responsive-menu">
+                        <div class="logo">
+                            <a href="src/index.html">
+                            <img src={this.obj.logo.url} class="white-logo" alt="logo" height="165" width="186"/>
+                            <img src={this.obj.logo.url} class="black-logo" height="68" width="202" alt="image"/>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
+            
 
-    <div class="huruma-nav">
-        <div class="container">
-            <nav class="navbar navbar-expand-md navbar-light navbar-fixed-top">
-                <a class="navbar-brand" href="index.html">
-                    <img src={this.obj.logo.url} class="white-logo" alt="logo" height="165" width="186"/>
-                    <img src={this.obj.logo.url} class="black-logo" height="68" width="202" alt="image"/>
-                </a>
+            <div class="huruma-nav">
+                <div class="container">
+                    <nav class="navbar navbar-expand-md navbar-light navbar-fixed-top">
+                        <a class="navbar-brand" href="index.html">
+                            <img src={this.obj.logo.url} class="white-logo" alt="logo" height="165" width="186"/>
+                            <img src={this.obj.logo.url} class="black-logo" height="68" width="202" alt="image"/>
+                        </a>
 
-                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <span>o1</span>
-                                Home 
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
+                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="index.html" class="nav-link">
-                                        Home One
+                                    <a href="home.html" class="nav-link active">
+                                        <span>o1</span>
+                                        Home 
+                                        {/* <i class='bx bx-chevron-down'></i> */}
                                     </a>
+                                    {/* <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="index.html" class="nav-link">
+                                                Home One
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="index-2.html" class="nav-link">
+                                                Home Two
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="index-3.html" class="nav-link">
+                                                Home Three
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="index-4.html" class="nav-link active">
+                                                Home Four
+                                            </a>
+                                        </li>
+                                    </ul> */}
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="index-2.html" class="nav-link">
-                                        Home Two
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="index-3.html" class="nav-link">
-                                        Home Three
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="index-4.html" class="nav-link active">
-                                        Home Four
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="about.html" class="nav-link">
-                                <span>o2</span>
-                                About
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span>o3</span>
-                                Causes 
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="causes.html" class="nav-link">
-                                        Causes
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="single-causes.html" class="nav-link">
-                                        Single Causes
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span>o4</span>
-                                Pages 
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-
-                            <ul class="dropdown-menu">
                                 <li class="nav-item">
                                     <a href="about.html" class="nav-link">
+                                        <span>o2</span>
                                         About
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="assets/pages/team.html" class="nav-link">
-                                        Team
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="gallery.html" class="nav-link">
-                                        Gallery
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
+                                {/* <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        Events 
+                                        <span>o3</span>
+                                        Causes 
+                                        <i class='bx bx-chevron-down'></i>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="events.html" class="nav-link">
-                                                Events
+                                            <a href="causes.html" class="nav-link">
+                                                Causes
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="single-events.html" class="nav-link">
-                                                Events Details
+                                            <a href="single-causes.html" class="nav-link">
+                                                Single Causes
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li> */}
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <span>o4</span>
+                                        Pages 
+                                        <i class='bx bx-chevron-down'></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="about.html" class="nav-link">
+                                                About
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="team.html" class="nav-link">
+                                                Team
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="gallery.html" class="nav-link">
+                                                Gallery
+                                            </a>
+                                        </li>
+
+                                        {/* <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Events 
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="nav-item">
+                                                    <a href="events.html" class="nav-link">
+                                                        Events
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    <a href="single-events.html" class="nav-link">
+                                                        Events Details
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="faq.html" class="nav-link">
+                                                Faq
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="feedback.html" class="nav-link">
+                                                Feedback
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                User 
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="nav-item">
+                                                    <a href="log-in.html" class="nav-link">
+                                                        Log In
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="sign-up.html" class="nav-link">
+                                                        Sign Up
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="recover-password.html" class="nav-link">
+                                                        Recover Password
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li> */}
+                                    
+                                        <li class="nav-item">
+                                            <a href="projects.html" class="nav-link">
+                                                Projects
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="media.html" class="nav-link">
+                                                Media
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="contact.html" class="nav-link">
+                                                Contact
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="faq.html" class="nav-link">
-                                        Faq
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="feedback.html" class="nav-link">
-                                        Feedback
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        User 
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="log-in.html" class="nav-link">
-                                                Log In
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="sign-up.html" class="nav-link">
-                                                Sign Up
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="recover-password.html" class="nav-link">
-                                                Recover Password
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            
-                                <li class="nav-item">
-                                    <a href="error-404.html" class="nav-link">
-                                        404 Error
-                                    </a>
-                                </li>
+                                
 
                                 <li class="nav-item">
                                     <a href="contact.html" class="nav-link">
+                                        <span>o6</span>
                                         Contact
                                     </a>
                                 </li>
                             </ul>
-                        </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span>o5</span>
-                                Blog 
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="blog-1.html" class="nav-link">
-                                        Blog Grid
-                                    </a>
-                                </li>
+                            <div class="others-options">
 
-                                <li class="nav-item">
-                                    <a href="blog-2.html" class="nav-link">
-                                        Blog Right Sidebar
-                                    </a>
-                                </li>
+                                <div class="option-item"><i class="search-btn bx bx-search"></i>
+                                    <i class="close-btn bx bx-x"></i>
+                                    <div class="search-overlay search-popup">
+                                        <div class='search-box'>
+                                            <form class="search-form">
+                                                <input class="search-input" name="search" placeholder="Search" type="text"/>
 
-                                <li class="nav-item">
-                                    <a href="single-blog.html" class="nav-link">
-                                        Blog Details
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                                <button class="search-button" type="submit">
+                                                    <i class="bx bx-search"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">
-                                <span>o6</span>
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="others-options">
-                        
-                        <div class="option-item"><i class="search-btn bx bx-search"></i>
-                            <i class="close-btn bx bx-x"></i>
-                            <div class="search-overlay search-popup">
-                                <div class='search-box'>
-                                    <form class="search-form">
-                                        <input class="search-input" name="search" placeholder="Search" type="text"/>
-
-                                        <button class="search-button" type="submit">
-                                            <i class="bx bx-search"></i>
-                                        </button>
-                                    </form>
+                                <div class="burger-menu">
+                                    <i class="flaticon-menu"></i>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="burger-menu">
-                            <i class="flaticon-menu"></i>
-                        </div>
-                    </div>
+                    </nav>
                 </div>
-            </nav>
+            </div>
         </div>
-    </div>
-</div>
-{ /** End Navbar Area  */ }
+        { /** End Navbar Area  */ }
 
 { /** Sidebar Modal  */ }
 <div class="sidebar-modal">
@@ -274,7 +255,7 @@ export class AppTeam {
             </div>
         </div>
 
-        <div class="sidebar-instagram-feed">
+        {/* <div class="sidebar-instagram-feed">
             <h2>Instagram</h2>
             <ul>
                 <li>
@@ -318,7 +299,7 @@ export class AppTeam {
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> */}
 
         <div class="sidebar-contact-area">
             <div class="contact-info">
@@ -379,12 +360,12 @@ export class AppTeam {
             <ul>
                 { /** SLIDE   */ }
                 {this.obj.photos.slice(0).map(s =>(
-                    <li data-index="rs-3049" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="/assets/huruma/img/main-banner1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="First Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" >
+                    <li data-index="rs-3049" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb={s}  data-rotate="0"  data-saveperformance="off"  data-title="First Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="" >
                     { /** MAIN IMAGE  */ }
                     <img src={s} alt="" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -500" data-offsetend="0 500" data-bgparallax="10" class="rev-slidebg" data-no-retina />
                     
                     <div class="tp-caption NotGeneric-Icon tp-resizeme" id="slide-3049-layer-8" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-70']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                    {this.obj.slug}
+                    {this.obj.name}
                     </div>
 
                     <div class="tp-caption NotGeneric-Title tp-resizeme" id="slide-3049-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-15','-15','-15','-15']" data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']" data-width="none" data-height="none" data-type="text" data-responsive_offset="on" data-frames='[{"from":"x:[-105%];z:0;rX:0deg;rY:0deg;rZ:-90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.1,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
@@ -499,14 +480,14 @@ export class AppTeam {
                     </div>
                 </div>
 
-                <div class="col-lg-5">
+                {/* <div class="col-lg-5">
                     <div class="team-btn text-right">
                         <a href="#" class="optional-btn">
                             Meet Our Team
                             <i class="flaticon-right"></i>
                         </a>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
 

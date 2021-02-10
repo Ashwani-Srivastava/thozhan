@@ -1,10 +1,10 @@
 import { Component, State, h } from '@stencil/core';
 
 @Component({
-    tag: 'app-gallery',
+    tag: 'app-contact',
     
 })
-export class AppGallery {
+export class AppContact{
 
     @State() obj: any = {
         name:"",
@@ -466,34 +466,112 @@ export class AppGallery {
 { /** End Slider Area  */ }
 
 
+        {/* <!-- Start Contact Area --> */}
+        <section class="contact-section ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="contact-info-address">
+                            <h3>Quick Contact </h3>
 
-        {/* <!-- Start Gallery Area --> */}
-        <div class="gallery-area pt-100 pb-70">
-            <div class="section-title">
-                <h2>Gallery</h2>
-                <p></p>
-            </div>
+                            <div class="info-contact">
+                                <i class="flaticon-pin"></i>
+                                <h3>Location</h3>
+                                <span>{this.obj.address}</span>
+                            </div>
 
-            <div class="container-fluid">
-                <div class="row justify-content-around">
-                    {this.obj.photos.slice(0).map(s => (
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-gallery-box">
-                            <img src={s} alt="image"/>
-    
-                            <a href={s} class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class="flaticon-search"></i>
-                            </a>
+                            <div class="info-contact">
+                                <i class="flaticon-call"></i>
+                                <h3>Call Us</h3>
+                                <span><a href="tel:+882-569-756">{this.obj.reachOut.phone1}</a></span>
+                            </div>
+
+                            <div class="info-contact">
+                                <i class="flaticon-email"></i>
+                                <h3>Email Us</h3>
+                                <span>
+                                    <a href="mailto:hello@plamb.com">
+                                        {this.obj.reachOut.email}
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    ))}
-                    
+
+                    <div class="col-lg-8">
+                        <div class="contact-area">
+                            <div class="contact-content">
+                                <h3>Let’s talk!</h3>
+                                <p>Contact us</p>
+                            </div>
+
+                            <div class="contact-form">
+                                <form id="contactForm">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Name"/>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="phone_number" id="phone_number" required data-error="Please enter your number" class="form-control" placeholder="Phone"/>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="email"/>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="msg_website" id="msg_website" class="form-control" required data-error="Please enter your website" placeholder="Website"/>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="message" class="form-control" id="message" required data-error="Write your message" placeholder="Write Something"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="send-btn">
+                                                <button type="submit" class="default-btn">
+                                                    Contact us
+                                                    <i class="flaticon-right"></i>
+                                                    <span></span>
+                                                </button>
+                                            </div>
+                                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+        {/* <!-- End Contact Area --> */}
+
+        {/* <!-- Start Map Area --> */}
+        <div class="map-section">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125142.32921240508!2d80.12297388197562!3d13.03478765670831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52612ae4eb6d73%3A0x61c5fdff1ce759d!2sNesapakkam%2C%20Chennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sbd!4v1612843877235!5m2!1sen!2sbd" width="600" height="450" frameborder="0" aria-hidden="false" tabindex="0"></iframe>
         </div>
-        {/* <!-- End Gallery Area --> */}
-                    <app-footer></app-footer>
-            </ion-content>
+        {/* <!-- End Map Area --> */}
+
+        <app-footer></app-footer>
+        </ion-content>
         
         </span> );
     }

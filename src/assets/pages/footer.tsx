@@ -175,7 +175,7 @@ export class AppFooter{
                         <div class="row align-items-center">
                             <div class="col-lg-4">
                                 <div class="copyright-logo">
-                                    <img src="assets/img/white-logo.png" alt="image"/>
+                                    <img src={this.obj.logo.url} alt="image"/>
                                 </div>
                             </div>
 
